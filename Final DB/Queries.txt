@@ -1,0 +1,38 @@
+_________________________
+	BOX ORDERS
+TTTTTTTTTTTTTTTTTTTTTTTTT
+
+SELECT TO_CHAR(titemorder.ordercost,'l999999.99') "Order Cost", titemorder.itemcount "Order Quantity", TO_CHAR(titemorder.itemcost,'l999.99') "Item Cost", tbox.name "Box Name", TO_CHAR(tbox.price,'l999.99') "Box Price"
+FROM tbox, tboxorder, titemorder
+WHERE tbox.id = tboxorder.boxid
+AND titemorder.orderid = tboxorder.orderid;
+
+//Count Potential Profit For Box Items
+	
+
+//Profit View  | Profit_Box
+CREATE OR REPLACE VIEW Profit_Box (ORDER_COST, ORDER_QUANTITY, ITEM_COST, BOX_NAME, BOX_PRICE, POTENTIAL_PROFIT) AS
+SELECT TO_CHAR(titemorder.ordercost,'l999999.99') "Order Cost", titemorder.itemcount "Order Quantity", TO_CHAR(titemorder.itemcost,'l999.99') "Item Cost", tbox.name "Box Name", TO_CHAR(tbox.price,'l999.99') "Box Price",TO_CHAR(titemorder.itemcount * tbox.price - titemorder.ordercost,'l99999.99') "Potential Profit"
+FROM tbox, tboxorder, titemorder
+WHERE tbox.id = tboxorder.boxid
+AND titemorder.orderid = tboxorder.orderid;
+
+
+
+CREATE OR REPLACE VIEW Profit_Box (ORDER_COST, ORDER_QUANTITY, ITEM_COST, BOX_NAME, BOX_PRICE, POTENTIAL_PROFIT) AS
+SELECT titemorder.ordercost "Order Cost", titemorder.itemcount "Order Quantity", titemorder.itemcost "Item Cost", tbox.name "Box Name", tbox.price"Box Price",titemorder.itemcount * tbox.price - titemorder.ordercost "Potential Profit"
+FROM tbox, tboxorder, titemorder
+WHERE tbox.id = tboxorder.boxid
+AND titemorder.orderid = tboxorder.orderid;
+
+SELECT TO_CHAR(box_price - item_cost,'l999.99') "Unit Profit"
+FROM Profit_Box;
+
+
+id  = 5 
+
+SELECT foodgroup, foodname, tfooditem.name
+FROM tfoodgroup, tfood, tfooditem
+WHERE foodtypeid = 5
+AND tfood.foodgroupid = tfoodgroup.foodgroupid
+AND tfooditem.foodid = tfood.foodid;

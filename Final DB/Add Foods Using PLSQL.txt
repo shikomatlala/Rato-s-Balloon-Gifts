@@ -1,0 +1,41 @@
+SET SERVEROUTPUT ON
+
+CREATE OF REPLACE PROCEDURE EnterFoodItem IS
+
+	v_id		tfooditem.id%TYPE;
+	v_name 		tfooditem.name%TYPE;			
+	v_price 	tfooditem.price%TYPE;			
+	v_brand 	tfooditem.brand%TYPE;			
+	v_description	tfooditem.description%TYPE;		
+	v_foodid 	tfooditem.foodid%TYPE;			
+	v_weightype 	tfooditem.weightype%TYPE;		
+	v_weight	tfooditem.weight%TYPE; 			
+	v_stockcount	tfooditem.stockcount%TYPE;	
+	
+	BEGIN
+		v_name := &v_name;
+		DBMS_OUTPUT.PUT_LINE('We are testing if this works ' || v_name);
+	END EnterFoodItem;
+/
+CREATE 
+	
+CREATE OR REPLACE PROCEDURE EnterFoodItem
+IS
+	BEGIN
+		v_id:= &v_id;
+		DBMS_OUTPUT.PUT_LINE('We are testing if this works ' || v_id);
+	END EnterFoodItem;
+/	
+	
+
+Start today to increase your faith.
+- Jesus Christ will increase our ability to move mountains in our lives.
+- Study the  scriptures, know the doctrine of Christ -- The gospel of Jesus Christ applies to you.
+- Learn about the Saviour
+
+
+CREAE OR REPLACE PROCEDURE EnterFoodItem()
+IS
+	BEGIN
+	END EnterFoodItem;
+/
